@@ -44,7 +44,7 @@ export default {
       })
     }
   },
-
+  //Import child component
   components: {
     SearchResults
   }
