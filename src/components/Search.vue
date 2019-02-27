@@ -1,7 +1,8 @@
 <template>
   <div id="SearchBox">
     <div class="SearchForm">
-      <h1>Book Search</h1>
+      <h1>BOOKTHOPIA</h1>
+      <h6>A name inspired by my girlfriend.</h6>
       <form @submit.prevent="search()">
         <div class="form-group">
           <input type="text" 
