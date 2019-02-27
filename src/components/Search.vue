@@ -2,7 +2,7 @@
   <div id="SearchBox">
     <div class="SearchForm">
       <h1>Book Search</h1>
-      <form @submit.prevent="search">
+      <form @submit.prevent="search()">
         <div class="form-group">
           <input type="text" 
                  v-model="form.search" 
@@ -52,6 +52,7 @@ export default {
       this.$axios.get(`/volumes?q=`+this.form.search)
       .then((response) => {
         this.isApiCall = true;
+        this.isLoading = false;
         this.items = response.data.items
         console.log(response.data.items)
       }).catch(e => {
@@ -59,9 +60,15 @@ export default {
       })
     }
   },
+  //disable search button
   computed:{
     isDisabled() {
-      return this.form.search.length > 0 ? false : true;
+      if(this.form.search.length > 0) {
+        return false;
+      } else if (this.isLoading) {
+        return false;
+      }
+      return true;
     }
   },
   //Import child component
