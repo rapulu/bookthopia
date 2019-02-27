@@ -16,6 +16,14 @@
       <div class="row" v-if="isApiCall">
         <SearchResults v-for="item in items" :item="item"/> 
       </div>
+      <div class="row" v-else>
+        <span class="spinner" v-if="isLoading">
+          <img src="../assets/spinner.gif"  />
+        </span>
+        <span class="iniMessage" v-if="!isLoading">
+          Nothing Here Yet - Try Searching For A Book!
+        </span>
+      </div>
     </div>      
   </div>
 </template>
@@ -40,6 +48,7 @@ export default {
 
   methods:{
     search(){
+      this.isLoading = true;
       this.$axios.get(`/volumes?q=`+this.form.search)
       .then((response) => {
         this.isApiCall = true;
@@ -71,6 +80,11 @@ export default {
   width:50%;
   margin: 0 auto;
   display: block;
+}
+
+.spinner,.iniMessage{
+  text-align:center;
+  margin: 50px auto;
 }
 
 </style>

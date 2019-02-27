@@ -1,5 +1,5 @@
 <template>
-  <div class="col-6" id="BookDisplay">
+  <div class="col-md-6" id="BookDisplay">
     <div class="media">
       <img class="media-left" v-bind:src="image.thumbnail" v-if="image">
       <div class="media-body">
