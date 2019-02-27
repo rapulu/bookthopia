@@ -9,11 +9,11 @@
                  class="form-control" 
                  id="SearchInput">
         </div>
-        <button type="submit" class="btn btn-primary">Search</button>
+        <button type="submit" class="btn btn-primary" :disabled="isDisabled">Search</button>
       </form>
     </div>
     <div class="container">
-      <div class="row">
+      <div class="row" v-if="isApiCall">
         <SearchResults v-for="item in items" :item="item"/> 
       </div>
     </div>      
@@ -29,7 +29,12 @@ export default {
       form:{
         search:''
       },
-      items: ''
+
+      items: '',
+
+      isApiCall: false,
+
+      isLoading: false
     }
   },
 
@@ -37,11 +42,17 @@ export default {
     search(){
       this.$axios.get(`/volumes?q=`+this.form.search)
       .then((response) => {
+        this.isApiCall = true;
         this.items = response.data.items
         console.log(response.data.items)
       }).catch(e => {
         console.log(e)
       })
+    }
+  },
+  computed:{
+    isDisabled() {
+      return this.form.search.length > 0 ? false : true;
     }
   },
   //Import child component
