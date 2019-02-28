@@ -1,19 +1,24 @@
 <template>
-  <div id="SearchBox">
-    <div class="SearchForm">
-      <h1>BOOKTHOPIA</h1>
-      <h6>A name inspired by my girlfriend.</h6>
-      <form @submit.prevent="search()">
-        <div class="form-group">
-          <input type="text" 
-                 v-model="form.search" 
-                 class="form-control" 
-                 id="SearchInput">
+    <div>
+      <div class="row">
+        <div class="col text-center">
+          <h1>BOOKTHOPIA</h1>
+          <span>A name inspired by my girlfriend.</span>
+          <form @submit.prevent="search()" autocomplete="off">
+            <div class="form-group">
+              <input type="text" 
+                     v-model="form.search" 
+                     class="form-control" 
+                     id="SearchInput">
+            </div>
+            <button type="submit" 
+                    class="btn btn-primary" 
+                    :disabled="isDisabled">
+                      Search
+                    </button>
+          </form>
         </div>
-        <button type="submit" class="btn btn-primary" :disabled="isDisabled">Search</button>
-      </form>
-    </div>
-    <div class="container">
+      </div>
       <div class="row" v-if="isApiCall">
         <SearchResults v-for="item in items" :item="item"/> 
       </div>
@@ -24,9 +29,8 @@
         <span class="iniMessage" v-if="!isLoading">
           Nothing Here Yet - Try Searching For A Book!
         </span>
-      </div>
-    </div>      
-  </div>
+      </div>     
+    </div>
 </template>
 
 <script>
@@ -43,7 +47,9 @@ export default {
 
       isApiCall: false,
 
-      isLoading: false
+      isLoading: false,
+
+      error: false
     }
   },
 
@@ -57,6 +63,7 @@ export default {
         this.items = response.data.items
         console.log(response.data.items)
       }).catch(e => {
+        this.error = true;
         console.log(e)
       })
     }
@@ -80,19 +87,35 @@ export default {
 </script>
 
 <style>
-#SearchBox{
-  
-}
-.SearchForm{
-  text-align:center;
-  width:50%;
+form{
+  width: 50%;
   margin: 0 auto;
-  display: block;
 }
+
+textarea:focus, 
+textarea.form-control:focus, 
+input.form-control:focus, 
+input[type=text]:focus, 
+input[type=password]:focus, 
+input[type=email]:focus, 
+input[type=number]:focus, 
+[type=text].form-control:focus, 
+[type=password].form-control:focus, 
+[type=email].form-control:focus, 
+[type=tel].form-control:focus, 
+[contenteditable].form-control:focus {
+  box-shadow: inset 0 -1px 0 #ddd;
+}
+
+.btn-primary{
+  color: #fff;
+  background-color: #66e8b0 ;
+  border-color: #66e8b0;
+}    
 
 .spinner,.iniMessage{
   text-align:center;
-  margin: 50px auto;
+  margin: 50px auto !IMPORTANT;
 }
 
 </style>
