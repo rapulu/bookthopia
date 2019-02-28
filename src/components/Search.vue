@@ -3,7 +3,7 @@
       <div class="row">
         <div class="col text-center">
           <h1>BOOKTHOPIA</h1>
-          <span>A name inspired by my girlfriend.</span>
+          <span></span>
           <form @submit.prevent="search()" autocomplete="off">
             <div class="form-group">
               <input type="text" 
@@ -29,7 +29,7 @@
         <span class="iniMessage" v-if="!isLoading">
           Nothing Here Yet - Try Searching For A Book!
         </span>
-      </div>     
+      </div>
     </div>
 </template>
 
@@ -109,7 +109,7 @@ input[type=number]:focus,
 
 .btn-primary{
   color: #fff;
-  background-color: #66e8b0 ;
+  background-color: #66e8b0;
   border-color: #66e8b0;
 }    
 
