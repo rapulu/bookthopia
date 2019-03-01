@@ -4,11 +4,13 @@
       <img class="media-left" v-bind:src="image.thumbnail" v-if="image">
       <div class="media-body">
         <div class="card-title">{{ title }}</div>
-        <div class="card-text">
+        <div class="card-text book-author">
           By: <span v-for="author in authors">{{ author }} </span>
         </div>
-        <div class="card-text">Published By: {{ publisher }}</div>
-        <a :href="link" class="btn btn-primary" target="_blank">More</a>
+        <div class="card-text book-publisher">Published By: {{ publisher }}</div>
+        <button type="button" :href="link" class="btn btn-link" target="_blank">
+          More
+        </button>
       </div>
     </div>
   </div>
@@ -53,5 +55,35 @@ export default {
 }
 .card-text,.card-title {
     word-wrap: break-word;
+}
+
+.card-title{
+  font-size: 26px;
+  margin-bottom: 10px;
+  color: #1f2d55;
+}
+
+.book-author{
+  line-height: 15px;
+  font-size: 13px;
+  color: #7a88b4;
+}
+
+.book-publisher{
+  margin-top: 50px;
+  font-size: 12px;
+  align-self: flex-end;
+  color: #b4bed6;
+  padding-right: 20px;
+}
+
+.media-body{
+  padding-left: 50px;
+}
+
+.btn-link{
+  padding-left: 0px !important;
+  text-decoration: none !important;
+
 }
 </style>
