@@ -84,6 +84,6 @@ export default {
 .btn-link{
   padding-left: 0px !important;
   text-decoration: none !important;
-
+  color: #1f2d55 !important;
 }
 </style>
