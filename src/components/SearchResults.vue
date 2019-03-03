@@ -85,7 +85,7 @@ img{
 }
 
 .media-body{
-  padding-left: 50px;
+  padding-left: 20px;
   padding-bottom: 30px;
   flex-wrap: wrap !important; 
   height: 200px !important;
