@@ -64,6 +64,10 @@ export default {
   color: #f3626a;
 }
 
+img{
+  height:190px !important;
+}
+
 .book-author{
   line-height: 15px;
   font-size: 13px;
