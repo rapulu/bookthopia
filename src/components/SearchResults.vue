@@ -48,8 +48,8 @@ export default {
 .media {
   background-color:#ffffff !important;
   border-radius: 4px;
-  max-width: 100%;
-  max-height: 100%;
+  width: 100%;
+  height: 100%;
   margin-top:50px;
   box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
   height: 200px;
@@ -63,6 +63,9 @@ export default {
   font-weight: bold;
   color: #f3626a;
   line-height: .9 !important;
+  white-space: nowrap !important; 
+  overflow:hidden !important;
+  text-overflow: ellipsis !important;
 }
 
 img{
@@ -89,6 +92,7 @@ img{
   padding-bottom: 30px;
   flex-wrap: wrap !important; 
   height: 200px !important;
+  width: 100px;
 }
 
 .btn-link{
