@@ -107,6 +107,7 @@ form{
 }
 .headerTitle{
   color:#dc3545;
+  font-family: 'Philosopher', sans-serif;
 }
 
 textarea:focus, 
@@ -127,6 +128,7 @@ input[type=number]:focus,
 .spinner,.iniMessage{
   text-align:center;
   margin: 50px auto !IMPORTANT;
+  font-family: 'Lobster Two', cursive;
 }
 
 </style>
