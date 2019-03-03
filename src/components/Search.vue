@@ -2,8 +2,7 @@
     <div>
       <div class="row">
         <div class="col text-center">
-          <h1>BOOKTHOPIA</h1>
-          <span></span>
+          <span class="headerTitle"><h1>BOOKTHOPIA</h1></span>
           <form @submit.prevent="search()" autocomplete="off">
             <div class="form-group">
               <input type="text" 
@@ -12,7 +11,7 @@
                      id="SearchInput">
             </div>
             <button type="submit" 
-                    class="btn btn-primary" 
+                    class="btn btn-danger" 
                     :disabled="isDisabled">
                       Search
                     </button>
@@ -20,14 +19,25 @@
         </div>
       </div>
       <div class="row" v-if="isApiCall">
-        <SearchResults v-for="item in items" :item="item"/> 
+        <SearchResults v-for="item in items" 
+                        :item="item"
+                        v-if="totalItems > 0"/>
+        <span class="iniMessage" v-if="totalItems == 0">
+          <h4>No Book Found.</h4>
+          Try searching for another book.
+        </span>                 
       </div>
-      <div class="row" v-else>
+      <div class="row" v-if="!isApiCall">
         <span class="spinner" v-if="isLoading">
           <img src="../assets/spinner.gif"  />
         </span>
         <span class="iniMessage" v-if="!isLoading">
           Nothing Here Yet - Try Searching For A Book!
+        </span>
+      </div>
+      <div class="row" v-if="error">
+        <span class="iniMessage" v-if="!isLoading">
+          Something terribly went wrong
         </span>
       </div>
     </div>
@@ -43,7 +53,9 @@ export default {
         search:''
       },
 
-      items: '',
+      items: [],
+
+      totalItems: 0,
 
       isApiCall: false,
 
@@ -60,9 +72,11 @@ export default {
       .then((response) => {
         this.isApiCall = true;
         this.isLoading = false;
-        this.items = response.data.items
+        this.items = response.data.items;
+        this.totalItems = response.data.totalItems;
         console.log(response.data.items)
       }).catch(e => {
+        this.isApiCall = true;
         this.error = true;
         console.log(e)
       })
@@ -91,6 +105,9 @@ form{
   width: 50%;
   margin: 0 auto;
 }
+.headerTitle{
+  color:#6b67cc;
+}
 
 textarea:focus, 
 textarea.form-control:focus, 
@@ -105,13 +122,7 @@ input[type=number]:focus,
 [type=tel].form-control:focus, 
 [contenteditable].form-control:focus {
   box-shadow: inset 0 -1px 0 #ddd;
-}
-
-.btn-primary{
-  color: #fff;
-  background-color: #66e8b0;
-  border-color: #66e8b0;
-}    
+}  
 
 .spinner,.iniMessage{
   text-align:center;
