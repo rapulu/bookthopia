@@ -11,7 +11,7 @@
                      id="SearchInput">
             </div>
             <button type="submit" 
-                    class="btn btn-danger" 
+                    class="btn btn-secondary" 
                     :disabled="isDisabled">
                       Search
                     </button>
@@ -106,7 +106,7 @@ form{
   margin: 0 auto;
 }
 .headerTitle{
-  color:#6b67cc;
+  color:#dc3545;
 }
 
 textarea:focus, 

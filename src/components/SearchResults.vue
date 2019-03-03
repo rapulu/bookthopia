@@ -59,9 +59,10 @@ export default {
 }
 
 .card-title{
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
   color: #f3626a;
+  line-height: .9 !important;
 }
 
 img{
@@ -85,7 +86,9 @@ img{
 
 .media-body{
   padding-left: 50px;
+  padding-bottom: 30px;
   flex-wrap: wrap !important; 
+  height: 200px !important;
 }
 
 .btn-link{
