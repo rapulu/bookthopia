@@ -1,5 +1,5 @@
 <template>
-  <div class="col-md-6" id="BookDisplay">
+  <div class="col-md-6 col-lg-6 col-sm-12" id="BookDisplay">
     <div class="media">
       <img class="media-left" v-bind:src="image.thumbnail" v-if="image">
       <div class="media-body">
@@ -52,21 +52,23 @@ export default {
   max-height: 100%;
   margin-top:50px;
   box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+  height: 200px;
 }
 .card-text,.card-title {
     word-wrap: break-word;
 }
 
 .card-title{
-  font-size: 26px;
-  margin-bottom: 10px;
-  color: #1f2d55;
+  font-size: 16px;
+  font-weight: bold;
+  color: #f3626a;
 }
 
 .book-author{
   line-height: 15px;
   font-size: 13px;
   color: #7a88b4;
+
 }
 
 .book-publisher{
@@ -79,11 +81,12 @@ export default {
 
 .media-body{
   padding-left: 50px;
+  flex-wrap: wrap !important; 
 }
 
 .btn-link{
   padding-left: 0px !important;
   text-decoration: none !important;
-  color: #1f2d55 !important;
+  color: #6b67cc !important;
 }
 </style>
