@@ -8,9 +8,9 @@
           By: <span v-for="author in authors">{{ author }} </span>
         </div>
         <div class="card-text book-publisher">Published By: {{ publisher }}</div>
-        <button type="button" :href="link" class="btn btn-link" target="_blank">
+        <a :href="link" class="btn btn-link" target="_blank">
           More
-        </button>
+        </a>
       </div>
     </div>
   </div>
