@@ -62,7 +62,7 @@ export default {
   font-size: 18px;
   font-weight: bold;
   color: #f3626a;
-  line-height: .9 !important;
+  line-height: 1.5 !important;
   white-space: nowrap !important; 
   overflow:hidden !important;
   text-overflow: ellipsis !important;
