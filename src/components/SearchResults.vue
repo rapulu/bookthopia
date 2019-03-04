@@ -5,7 +5,9 @@
       <div class="media-body">
         <div class="card-title">{{ title }}</div>
         <div class="card-text book-author">
-          By: <span v-for="author in authors">{{ author }} </span>
+          By: <span v-for="author in authors" :key="author.id">
+                {{ author }} 
+              </span>
         </div>
         <div class="card-text book-publisher">Published By: {{ publisher }}</div>
         <a :href="link" class="btn btn-link" target="_blank">
