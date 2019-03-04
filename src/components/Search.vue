@@ -18,16 +18,18 @@
           </form>
         </div>
       </div>
-      <div class="row" v-if="isApiCall">
-        <span v-if="totalItems > 0">
+      <div v-if="isApiCall">
+        <div class="row" v-if="totalItems > 0">
           <SearchResults v-for="item in items"
                          :key="item.id" 
                         :item="item"/>
-        </span>
-        <span class="iniMessage" v-if="totalItems == 0">
-          <h4>No Book Found.</h4>
-          Try searching for another book.
-        </span>                 
+        </div>
+        <div class="row"> 
+          <span class="iniMessage" v-if="totalItems == 0">
+            <h4>No Book Found.</h4>
+            Try searching for another book.
+          </span>
+        </div>                 
       </div>
       <div class="row" v-if="!isApiCall">
         <span class="spinner" v-if="isLoading">
