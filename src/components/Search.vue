@@ -19,9 +19,11 @@
         </div>
       </div>
       <div class="row" v-if="isApiCall">
-        <SearchResults v-for="item in items" 
-                        :item="item"
-                        v-if="totalItems > 0"/>
+        <span v-if="totalItems > 0">
+          <SearchResults v-for="item in items"
+                         :key="item.id" 
+                        :item="item"/>
+        </span>
         <span class="iniMessage" v-if="totalItems == 0">
           <h4>No Book Found.</h4>
           Try searching for another book.
@@ -61,7 +63,9 @@ export default {
 
       isLoading: false,
 
-      error: false
+      error: false,
+
+      showError:''
     }
   },
 
@@ -74,11 +78,10 @@ export default {
         this.isLoading = false;
         this.items = response.data.items;
         this.totalItems = response.data.totalItems;
-        console.log(response.data.items)
       }).catch(e => {
         this.isApiCall = true;
         this.error = true;
-        console.log(e)
+        this.showError = e;
       })
     }
   },
